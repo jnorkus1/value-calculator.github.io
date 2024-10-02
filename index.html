@@ -59,7 +59,7 @@
             cursor: pointer;
             font-size: 12px;
             line-height: 20px;
-            margin-left: 5px;
+            margin-left: 5px; /* Keep this for spacing */
         }
         .tooltiptext {
             visibility: hidden;
@@ -71,21 +71,15 @@
             padding: 10px;
             position: absolute;
             z-index: 1;
-            bottom: 135%; /* Adjust this to overlap with the question mark */
+            bottom: 100%; /* Position it above the question mark */
             left: 50%;
-            margin-left: -150px;
+            margin-left: -150px; /* Center it */
             opacity: 0;
             transition: opacity 0.3s;
-            /* Expanded the height to make it easier to hover over */
-            padding-bottom: 20px; /* Additional padding */
+            padding-bottom: 20px; /* Additional padding for the hit area */
         }
         .tooltip:hover .tooltiptext,
         .tooltip .tooltiptext:hover {
-            visibility: visible;
-            opacity: 1;
-        }
-        /* Prevent tooltip from disappearing on mouseover */
-        .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
