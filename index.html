@@ -59,8 +59,9 @@
             cursor: pointer;
             font-size: 12px;
             line-height: 20px;
+            margin-left: 5px;
         }
-        .tooltip .tooltiptext {
+        .tooltiptext {
             visibility: hidden;
             width: 300px;
             background-color: lightgray;
@@ -78,6 +79,10 @@
         }
         .tooltip:hover .tooltiptext, 
         .tooltip .tooltiptext:hover {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
