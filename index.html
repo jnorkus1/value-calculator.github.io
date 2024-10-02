@@ -43,6 +43,9 @@
             right: 20px; /* You can change this to "left: 20px;" for the left corner */
             width: 100px; /* Adjust size as needed */
         }
+        .cta {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -63,6 +66,8 @@
     <button onclick="calculateValue()">Calculate</button>
 
     <div id="result"></div>
+
+    <div class="cta" id="cta"></div>
 
     <div class="disclaimer">
         Please note: The information you enter in this calculator is not stored or shared. All calculations are performed locally in your browser for your convenience and privacy.
@@ -85,11 +90,23 @@
             var profit = (profitMargin / 100) * revenue;
             var businessValue = profit * multiple;
 
+            // Calculate the range (+/- 20%)
+            var lowerRange = businessValue * 0.8;
+            var upperRange = businessValue * 1.2;
+
+            // Format the numbers with commas
+            lowerRange = lowerRange.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            upperRange = upperRange.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
             // Show result
-            document.getElementById('result').innerText = "Estimated Business Value: $" + businessValue.toFixed(2);
+            document.getElementById('result').innerText = `Estimated Business Value Range: $${lowerRange} - $${upperRange}`;
+
+            // Add call to action
+            document.getElementById('cta').innerHTML = `
+                Want to explore this further? <a href="https://calendly.com/driftwoodheritage/25-meeting" target="_blank">Schedule a meeting</a> to discuss how we can help grow your business.
+            `;
         }
     </script>
 
 </body>
 </html>
-
