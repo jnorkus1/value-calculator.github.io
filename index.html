@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Value Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Business Value Calculator</h1>
+    <label for="revenue">Revenue ($):</label>
+    <input type="number" id="revenue" placeholder="Enter revenue">
+
+    <label for="profit-margin">Profit Margin (%):</label>
+    <input type="number" id="profit-margin" placeholder="Enter profit margin">
+
+    <label for="multiple">Industry Multiple:</label>
+    <input type="number" id="multiple" placeholder="Enter industry multiple">
+
+    <button onclick="calculateValue()">Calculate</button>
+
+    <div id="result"></div>
+
+    <div class="disclaimer">
+        Please note: The information you enter in this calculator is not stored or shared. All calculations are performed locally in your browser for your convenience and privacy.
+    </div>
+
+    <script>
+        function calculateValue() {
+            // Get input values
+            var revenue = parseFloat(document.getElementById('revenue').value);
+            var profitMargin = parseFloat(document.getElementById('profit-margin').value);
+            var multiple = parseFloat(document.getElementById('multiple').value);
+
+            // Check if all fields are filled
+            if (isNaN(revenue) || isNaN(profitMargin) || isNaN(multiple)) {
+                document.getElementById('result').innerText = "Please fill in all fields.";
+                return;
+            }
+
+            // Calculate business value
+            var profit = (profitMargin / 100) * revenue;
+            var businessValue = profit * multiple;
+
+            // Show result
+            document.getElementById('result').innerText = "Estimated Business Value: $" + businessValue.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
