@@ -59,7 +59,9 @@
             cursor: pointer;
             font-size: 12px;
             line-height: 20px;
-            margin-left: 5px; /* Keep this for spacing */
+            margin-left: 5px; /* Adjust for desired spacing */
+            position: relative;
+            z-index: 10; /* Ensure it's above the tooltip */
         }
         .tooltiptext {
             visibility: hidden;
@@ -81,6 +83,10 @@
         .tooltip .tooltiptext:hover {
             visibility: visible;
             opacity: 1;
+        }
+        /* Connect the tooltip to the question mark */
+        .tooltip:hover .tooltiptext {
+            bottom: 30px; /* Position closer to the tooltip box */
         }
     </style>
 </head>
