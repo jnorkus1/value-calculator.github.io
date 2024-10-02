@@ -36,15 +36,39 @@
             font-size: 0.9em;
             color: #555;
         }
-        /* Logo styling */
         .logo {
             position: absolute;
             top: 20px;
-            right: 20px; /* You can change this to "left: 20px;" for the left corner */
-            width: 100px; /* Adjust size as needed */
+            right: 20px;
+            width: 100px;
         }
         .cta {
             margin-top: 20px;
+        }
+        .tooltip {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: lightgray;
+            color: #000;
+            text-align: left;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
@@ -54,13 +78,30 @@
     <img src="logo.png" alt="Company Logo" class="logo">
 
     <h1>Business Value Calculator</h1>
-    <label for="revenue">Revenue ($):</label>
-    <input type="number" id="revenue" placeholder="Enter revenue">
+    <label for="net-income">Net Income ($):</label>
+    <input type="number" id="net-income" placeholder="Enter net income">
 
-    <label for="profit-margin">Profit Margin (%):</label>
-    <input type="number" id="profit-margin" placeholder="Enter profit margin">
+    <label for="assets">Assets ($):</label>
+    <input type="number" id="assets" placeholder="Enter assets value">
 
-    <label for="multiple">Industry Multiple:</label>
+    <label for="liabilities">Liabilities ($):</label>
+    <input type="number" id="liabilities" placeholder="Enter liabilities value">
+
+    <label for="zip-code">Zip Code:</label>
+    <input type="text" id="zip-code" placeholder="Enter zip code">
+
+    <label for="company-age">Company Age (Years):</label>
+    <input type="number" id="company-age" placeholder="Enter company age">
+
+    <label for="multiple">Industry Multiple: 
+        <span class="tooltip">
+            <span style="font-size: small; color: gray;">&#x3F;</span>
+            <span class="tooltiptext">
+                The industry multiple is a factor used to estimate the value of a business based on comparable businesses. <br/>
+                <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/vebitda.html" target="_blank">Learn more here</a>.
+            </span>
+        </span>
+    </label>
     <input type="number" id="multiple" placeholder="Enter industry multiple">
 
     <button onclick="calculateValue()">Calculate</button>
@@ -76,19 +117,23 @@
     <script>
         function calculateValue() {
             // Get input values
-            var revenue = parseFloat(document.getElementById('revenue').value);
-            var profitMargin = parseFloat(document.getElementById('profit-margin').value);
+            var netIncome = parseFloat(document.getElementById('net-income').value);
+            var assets = parseFloat(document.getElementById('assets').value);
+            var liabilities = parseFloat(document.getElementById('liabilities').value);
+            var zipCode = document.getElementById('zip-code').value;  // zipCode not used in the formula but could be used in future enhancements
+            var companyAge = parseFloat(document.getElementById('company-age').value);
             var multiple = parseFloat(document.getElementById('multiple').value);
 
             // Check if all fields are filled
-            if (isNaN(revenue) || isNaN(profitMargin) || isNaN(multiple)) {
+            if (isNaN(netIncome) || isNaN(assets) || isNaN(liabilities) || isNaN(companyAge) || isNaN(multiple)) {
                 document.getElementById('result').innerText = "Please fill in all fields.";
                 return;
             }
 
-            // Calculate business value
-            var profit = (profitMargin / 100) * revenue;
-            var businessValue = profit * multiple;
+            // New estimation formula using net income, assets, liabilities, company age, and multiple
+            // Formula: ((Net Income + (Assets - Liabilities)) * (Company Age Factor)) * Industry Multiple
+            var companyAgeFactor = Math.max(1, companyAge / 10); // Scaling company age to influence value (older companies get a slightly higher valuation)
+            var businessValue = (netIncome + (assets - liabilities)) * companyAgeFactor * multiple;
 
             // Calculate the range (+/- 20%)
             var lowerRange = businessValue * 0.8;
