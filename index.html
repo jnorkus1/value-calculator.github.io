@@ -48,7 +48,17 @@
         .tooltip {
             display: inline-block;
             position: relative;
+        }
+        .tooltip-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: lightgray;
+            text-align: center;
+            border-radius: 3px;
             cursor: pointer;
+            font-size: 12px;
+            line-height: 20px;
         }
         .tooltip .tooltiptext {
             visibility: hidden;
@@ -66,7 +76,8 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-        .tooltip:hover .tooltiptext {
+        .tooltip:hover .tooltiptext, 
+        .tooltip .tooltiptext:hover {
             visibility: visible;
             opacity: 1;
         }
@@ -95,7 +106,7 @@
 
     <label for="multiple">Industry Multiple: 
         <span class="tooltip">
-            <span style="font-size: small; color: gray;">&#x3F;</span>
+            <span class="tooltip-box">?</span>
             <span class="tooltiptext">
                 The industry multiple is a factor used to estimate the value of a business based on comparable businesses. <br/>
                 <a href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/vebitda.html" target="_blank">Learn more here</a>.
