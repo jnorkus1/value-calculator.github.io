@@ -86,7 +86,10 @@
         }
         /* Connect the tooltip to the question mark */
         .tooltip:hover .tooltiptext {
-            bottom: 30px; /* Position closer to the tooltip box */
+            bottom: 35px; /* Adjust to position closer to the question mark box */
+        }
+        .tooltip-box:hover {
+            z-index: 15; /* Ensure the question mark is on top */
         }
     </style>
 </head>
