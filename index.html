@@ -71,12 +71,11 @@
             padding: 10px;
             position: absolute;
             z-index: 1;
-            bottom: 100%; /* Position it above the question mark */
+            bottom: 25px; /* Position it above the question mark */
             left: 50%;
-            margin-left: -150px; /* Center it */
+            transform: translateX(-50%); /* Center it */
             opacity: 0;
             transition: opacity 0.3s;
-            padding-bottom: 20px; /* Additional padding for the hit area */
         }
         .tooltip:hover .tooltiptext,
         .tooltip .tooltiptext:hover {
