@@ -76,12 +76,15 @@
             margin-left: -150px;
             opacity: 0;
             transition: opacity 0.3s;
+            /* Expanded the height to make it easier to hover over */
+            padding-bottom: 20px; /* Additional padding */
         }
-        .tooltip:hover .tooltiptext, 
+        .tooltip:hover .tooltiptext,
         .tooltip .tooltiptext:hover {
             visibility: visible;
             opacity: 1;
         }
+        /* Prevent tooltip from disappearing on mouseover */
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
