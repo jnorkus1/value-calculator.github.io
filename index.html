@@ -58,8 +58,7 @@
             text-align: center;
             border-radius: 3px;
             line-height: 20px;
-            margin-left: 5px; /* Adjust for desired spacing */
-            transition: all 0.3s; /* Add transition for smooth effect */
+            margin-left: 5px;
         }
         .tooltip-text {
             visibility: hidden;
@@ -71,22 +70,16 @@
             padding: 10px;
             position: absolute;
             z-index: 1;
-            bottom: 30px; /* Position it above the question mark */
+            bottom: 30px;
             left: 50%;
-            transform: translateX(-50%); /* Center it */
+            transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s, visibility 0.3s; /* Add transition for visibility */
+            transition: opacity 0.3s, visibility 0.3s;
         }
         .tooltip:hover .tooltip-text,
         .tooltip .tooltip-text:hover {
             visibility: visible;
             opacity: 1;
-        }
-        .tooltip:hover .tooltip-box {
-            width: 30px; /* Expand the question mark box */
-            height: 30px; /* Expand the question mark box */
-            font-size: 16px; /* Enlarge text inside the box */
-            line-height: 30px; /* Center text vertically */
         }
     </style>
 </head>
