@@ -10,6 +10,7 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
         }
         input {
             margin: 10px 0;
@@ -35,9 +36,19 @@
             font-size: 0.9em;
             color: #555;
         }
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px; /* You can change this to "left: 20px;" for the left corner */
+            width: 100px; /* Adjust size as needed */
+        }
     </style>
 </head>
 <body>
+
+    <!-- Add the logo here -->
+    <img src="logo.png" alt="Company Logo" class="logo">
 
     <h1>Business Value Calculator</h1>
     <label for="revenue">Revenue ($):</label>
@@ -81,3 +92,4 @@
 
 </body>
 </html>
+
